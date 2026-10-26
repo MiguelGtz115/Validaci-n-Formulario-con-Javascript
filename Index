@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Déjanos conocerte</title>
+
+  <link rel="stylesheet" href="estilos.css">
+  <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+</head>
+<body>
+
+  <div class="linea_naranja"></div>
+
+  <header class="cabecera">
+    <img src="imagenes/logo_cabecera.png" alt="Caja La Sagrada Familia">
+  </header>
+
+  <div class="titulo_principal">
+    <h1>DÉJANOS CONOCERTE</h1>
+    <hr>
+  </div>
+
+  <div class="ancho formulario_contenedor">
+    <h2>¡ Compártenos tu información !</h2>
+
+    <p>
+      Déjanos tus datos personales y nosotros nos comunicaremos contigo
+      lo más pronto posible.
+    </p>
+
+    <form action="#" method="post" id="formulario">
+
+      <div class="columna">
+        <input type="text" id="nombre" class="form" placeholder="Nombre Completo *">
+        <input type="text" id="correo" class="form" placeholder="Correo Electrónico *">
+        <input type="text" id="celular" class="form" placeholder="Celular *" maxlength="10">
+        <input type="text" class="form" placeholder="Ciudad">
+        <input type="text" class="form" placeholder="Localidad">
+      </div>
+
+      <div class="columna">
+        <input type="text" class="form" placeholder="Estado">
+        <input type="text" class="form" placeholder="Colonia">
+
+        <select id="area" class="elementoformulario">
+          <option value="" disabled selected>Elige tu área de interes *</option>
+          <option value="Cajas">Cajas</option>
+          <option value="Servicios">Servicios</option>
+          <option value="Asesoramiento Financiero">Asesoramiento Financiero</option>
+          <option value="Gestoría y Cobranza">Gestoría y Cobranza</option>
+          <option value="Crédito">Crédito</option>
+          <option value="Jurídico">Jurídico</option>
+          <option value="Archivo">Archivo</option>
+          <option value="Mercadotecnia">Mercadotecnia</option>
+          <option value="Diligencias">Diligencias</option>
+          <option value="Compras">Compras</option>
+          <option value="Intendencia">Intendencia</option>
+          <option value="Auditoría">Auditoría</option>
+          <option value="Capital Humano">Capital Humano</option>
+          <option value="Mantenimiento">Mantenimiento</option>
+          <option value="Sistemas">Sistemas</option>
+          <option value="Contabilidad">Contabilidad</option>
+          <option value="Administración">Administración</option>
+        </select>
+
+        <div class="personas">
+          <input type="radio" name="persona" value="fisica" checked> Persona Física
+          <input type="radio" name="persona" value="moral"> Persona Moral
+        </div>
+      </div>
+
+      <div class="limpiar"></div>
+
+      <button type="button" id="btn_enviar" class="btn_rojo">Enviar</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>
+      Alumno: Miguel Andrés Gutiérrez Panigua<br>
+      Grupo: 7SB<br>
+      Materia: Programación WEB 
+    </p>
+  </footer>
+
+  <script>
+    $("#btn_enviar").click(function () {
+
+      if ($("#nombre").val().trim() == "") {
+        alert("Escribe tu nombre completo");
+        $("#nombre").focus();
+        return false;
+      }
+
+      if ($("#correo").val().trim() == "") {
+        alert("Escribe tu correo electrónico");
+        $("#correo").focus();
+        return false;
+      }
+
+      let expresionCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!expresionCorreo.test($("#correo").val().trim())) {
+        alert("Escribe un correo válido");
+        $("#correo").focus();
+        return false;
+      }
+
+      if ($("#celular").val().trim() == "") {
+        alert("Escribe tu celular");
+        $("#celular").focus();
+        return false;
+      }
+
+      if ($("#area").val() == "") {
+        alert("Selecciona un área de interés");
+        $("#area").focus();
+        return false;
+      }
+
+      alert("Formulario enviado correctamente");
+      $("#formulario").submit();
+    });
+  </script>
+
+</body>
+</html>
